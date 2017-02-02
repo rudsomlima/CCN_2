@@ -22,7 +22,7 @@ class BoletosService {
                 WebDriver driver = new ChromeDriver();
                 //driver.manage().window().maximize();
 
-                while(n_page<53200) {
+                while(n_page<53300) {
                     String site_ccn = "http://www.sysca.com.br/ver_boleto.php?cod=$n_page";
                     driver.get(site_ccn);
                     nome = driver.findElement(By.xpath("//*[@id=\"boleto\"]/table[6]/tbody/tr[2]/td")).getText();
@@ -38,10 +38,13 @@ class BoletosService {
                     System.out.println("$nome - $valor - $vencimento");
                     Boletos boleto = new Boletos();
                     boleto.nome = nome;
-                    //boleto.vencimento = d_vencimento;
-                    //boleto.valor = i_valor;
+                    boleto.vencimento = d_vencimento;
+                    boleto.valor = i_valor;
+                    println boleto.nome
+                    println "Error: " + boleto.hasErrors()
+                    boleto.save(flush:true);
                    if(!boleto.hasErrors()){
-                       boleto.save(flush:true);
+
                        System.out.println("Salvo com sucesso!");
                    }else{
                        System.out.println("Erro ao salvar!");
@@ -49,5 +52,6 @@ class BoletosService {
                    }
                     n_page++;
                 }
+        driver.close();
     }
 }

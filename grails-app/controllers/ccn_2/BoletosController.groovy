@@ -12,6 +12,7 @@ class BoletosController {
 
     def rodar(){
         boletosService.extrair()
+        redirect(controller: "boletos", view: "index")
     }
 
     def index(Integer max) {
