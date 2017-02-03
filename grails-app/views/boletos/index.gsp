@@ -19,7 +19,27 @@
                 <div class="message" role="status">${flash.message}</div>
             </g:if>
             <f:table collection="${boletosList}" properties="['nome','valor','vencimento']" />
-            <f:field bean="boletos" property=""
+
+
+
+            <table>
+                <tr>
+                    <th>Nome</th>
+                    <th>Valor</th>
+                    <th>Vencimento</th>
+                </tr>
+                <g:each var="boleto" in="${boletosList}">
+                    <tr>
+                        <td>${boleto.nome}</td>
+                        <td>${boleto.valor}</td>
+                        <td>${boleto.vencimento}</td>
+                    </tr>
+                </g:each>
+            </table>
+
+
+
+
             <div class="pagination">
                 <g:paginate total="${boletosCount ?: 0}" />
             </div>
