@@ -4,7 +4,8 @@ class Boletos {
 
     String nome
     Date vencimento
-    Double valor
+    Float valor
+    String site
 
     static constraints = {
     }
