@@ -18,8 +18,8 @@ class BoletosService {
                 String valor;
                 Integer i_valor;
                 int flag_fim=0;
-                int n_page = 53550;
-                System.setProperty("webdriver.chrome.driver", "C:\\Users\\rudsom.lima\\Downloads\\chromedriver_win32\\chromedriver.exe");
+                int n_page = 53000;
+                System.setProperty("webdriver.chrome.driver", "lib\\chromedriver.exe");
                 WebDriver driver = new ChromeDriver();
                 //driver.manage().window().maximize();
 

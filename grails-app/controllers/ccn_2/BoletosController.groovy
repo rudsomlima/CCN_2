@@ -16,7 +16,7 @@ class BoletosController {
     }
 
     def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
+        params.max = Math.min(max ?: 50, 100)
         respond Boletos.list(params), model:[boletosCount: Boletos.count()]
     }
 

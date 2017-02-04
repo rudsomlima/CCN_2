@@ -7,45 +7,34 @@
     </head>
     <body>
         <a href="#list-boletos" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-        <div class="nav" role="navigation">
-            <ul>
-                <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-                <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-            </ul>
-        </div>
         <div id="list-boletos" class="content scaffold-list" role="main">
-            <h1><g:message code="default.list.label" args="[entityName]" /></h1>
-            <g:if test="${flash.message}">
+                 <g:if test="${flash.message}">
                 <div class="message" role="status">${flash.message}</div>
             </g:if>
             <f:table collection="${boletosList}" properties="['nome','valor','vencimento']" />
+            <table style="width:50%">
+                <div class="col-md-3">
 
-
-
-            <table>
                 <tr>
                     <th>Nome</th>
-                    <th>Valor</th>
-                    <th>Vencimento</th>
+                    <th style="text-align: center">Valor</th>
+                    <th style="text-align: center">Vencimento</th>
                 </tr>
                 <g:each var="boleto" in="${boletosList}">
                     <tr>
-                        <td>${boleto.nome}</td>
-                        <td>${boleto.valor}</td>
-                        <td>${boleto.vencimento}</td>
+                        <td><a href="${boleto.site}">${boleto.nome}</a></td>
+                        <td style="text-align: center">${String.format("%.2f",boleto.valor)}</td>
+                        <td style="text-align: center">${boleto.vencimento}</td>
+
                     </tr>
                 </g:each>
             </table>
 
 
-
-
             <div class="pagination">
                 <g:paginate total="${boletosCount ?: 0}" />
             </div>
-
-            <g:link controller="boletos" action="rodar" >   RODAR   </g:link>
-
+            <g:link controller="boletos" action="rodar" class="btn btn-lg btn-success">RODAR</g:link>
         </div>
     </body>
 </html>
