@@ -128,3 +128,4 @@ environments:
             password: uri.userInfo.split(":")[1]
 
 
+task stage(dependsOn: ['installDist'])
