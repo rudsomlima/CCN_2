@@ -118,14 +118,23 @@ environments:
             url: jdbc:mysql://localhost:3306/ccn2
     production:
 
+        grails.logging.jul.usebridge: false
+        grails.serverURL: http://lowcost-env.rt37x2g7cm.sa-east-1.elasticbeanstalk.com
+
         dataSource:
-            dbCreate: "update"
-            driverClassName: "org.postgresql.Driver"
-            dialect: org.hibernate.dialect.PostgreSQLDialect
-            uri: new URI(System.env.DATABASE_URL?:"postgres://test:test@localhost/test")
-            url: "jdbc:postgresql://" + uri.host + ":" + uri.port + uri.path
-            username: uri.userInfo.split(":")[0]
-            password: uri.userInfo.split(":")[1]
+            username: rudsom
+            password: nutel1979
+            pooled: true
+            dbCreate: update
+            driverClassName: com.mysql.jdbc.Driver
+            url: jdbc:mysql://ccn2.casdnxwazxad.sa-east-1.rds.amazonaws.com:3306/ebdb?user=rudsom&password=smolder
+            dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+            properties:
+              validationQuery: SELECT 1
+              testOnBorrow: true
+              testOnReturn: true
+              testWhileIdle: true
+              timeBetweenEvictionRunsMillis: 1800000
+              numTestsPerEvictionRun: 3
+              minEvictableIdleTimeMillis: 1800000
 
-
-task stage(dependsOn: ['installDist'])
