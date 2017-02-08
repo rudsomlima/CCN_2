@@ -5,8 +5,6 @@ import org.openqa.selenium.By
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.chrome.ChromeDriver
 
-import java.sql.Date
-
 @Transactional
 class BoletosService {
 
@@ -69,12 +67,12 @@ class BoletosService {
                                 println boleto.errors.allErrors
                             }
                             n_page++;
-                            if (nome.contains("RUDSOM"))
-                                sendMail {
-                                    to "rudsomlima@gmail.com"
-                                    subject "Boleto CCN - R\$ $valor"
-                                    body site_ccn
-                                }
+//                            if (nome.contains("RUDSOM"))
+//                                sendMail {
+//                                    to "rudsomlima@gmail.com"
+//                                    subject "Boleto CCN - R\$ $valor"
+//                                    body site_ccn
+//                                }
                         }
                     }
                 }

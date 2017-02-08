@@ -105,29 +105,26 @@ dataSource:
     jmxExport: true
     driverClassName: com.mysql.jdbc.Driver
     username: rudsom
-    password: smolder
+    password: 16..
 
 environments:
     development:
         dataSource:
             dbCreate: create-drop
-            url: jdbc:mysql://localhost:3306/ccn2
+            url: jdbc:mysql://ebdb.casdnxwazxad.sa-east-1.rds.amazonaws.com:3306/ebdb?user=rudsom&password=16....
     test:
         dataSource:
             dbCreate: update
             url: jdbc:mysql://localhost:3306/ccn2
     production:
 
-        grails.logging.jul.usebridge: false
-        grails.serverURL: http://lowcost-env.rt37x2g7cm.sa-east-1.elasticbeanstalk.com
-
         dataSource:
             username: rudsom
-            password: nutel1979
+            password: 16local31
             pooled: true
             dbCreate: update
             driverClassName: com.mysql.jdbc.Driver
-            url: jdbc:mysql://ccn2.casdnxwazxad.sa-east-1.rds.amazonaws.com:3306/ebdb?user=rudsom&password=smolder
+            url: jdbc:mysql://ebdb.casdnxwazxad.sa-east-1.rds.amazonaws.com:3306/ebdb?user=rudsom&password=16...
             dialect: org.hibernate.dialect.MySQL5InnoDBDialect
             properties:
               validationQuery: SELECT 1
