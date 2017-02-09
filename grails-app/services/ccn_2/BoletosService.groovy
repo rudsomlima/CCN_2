@@ -14,16 +14,28 @@ class BoletosService {
                 String nome;
                 String vencimento;
                 def d_vencimento;
+                String raiz_ccn= "http://www.sysca.com.br/ver_boleto.php?cod="
+                String site_ccn;
                 String valor;
                 Integer i_valor;
                 int flag_fim=0;
-                int n_page = 53520;
+                int n_page = 53550;
                 System.setProperty("webdriver.chrome.driver", "lib\\chromedriver.exe");
                 WebDriver driver = new ChromeDriver();
                 //driver.manage().window().maximize();
+                try {
+                    n_page = Boletos.last().site.toInteger();
+                } catch (Exception e1) {
+                    n_page = 53550;
+                }
+                println site_ccn;
 
                 while(flag_fim==0) {
-                    String site_ccn = "http://www.sysca.com.br/ver_boleto.php?cod=$n_page";
+                    n_page++;
+                    def today = new Date().format("MM");
+                    //println today;
+                    site_ccn = "$raiz_ccn$n_page";
+                    println site_ccn;
                     driver.get(site_ccn);
                     String fim = ""
                     def site_banco;
@@ -37,6 +49,7 @@ class BoletosService {
                             fim = driver.findElement(By.xpath("/html/body/h2")).getText();
                             println fim;
                             if (fim == "BOLETO NÃO ENCONTRADO.") {
+
                                 println "nao achou boleto";
                                 driver.close();
                                 flag_fim = 1;
@@ -58,7 +71,7 @@ class BoletosService {
                             boleto.nome = nome;
                             boleto.vencimento = vencimento;
                             boleto.valor = valor;
-                            boleto.site = site_ccn;
+                            boleto.site = n_page;
                             if (!boleto.hasErrors()) {
                                 boleto.save(flush: true);
                                 System.out.println("Salvo com sucesso!");
@@ -66,7 +79,7 @@ class BoletosService {
                                 System.out.println("Erro ao salvar!");
                                 println boleto.errors.allErrors
                             }
-                            n_page++;
+
 //                            if (nome.contains("RUDSOM"))
 //                                sendMail {
 //                                    to "rudsomlima@gmail.com"

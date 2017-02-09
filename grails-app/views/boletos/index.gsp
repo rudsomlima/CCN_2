@@ -10,10 +10,14 @@
     </head>
     <body>
         <a href="#list-boletos" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-        <div id="list-boletos" class="content scaffold-list" role="main">
-                 <g:if test="${flash.message}">
+
+            <g:if test="${flash.message}">
                 <div class="message" role="status">${flash.message}</div>
             </g:if>
+
+            <div class="col-md-12 text-center">
+                <g:link controller="boletos" action="rodar" class="btn btn-lg btn-success">RODAR</g:link>
+            </div>
 
             <table style="width:50%">
                 <div class="col-md-3">
@@ -25,7 +29,7 @@
                 </tr>
                 <g:each var="boleto" in="${boletosList}">
                     <tr>
-                        <td><a href="${boleto.site}">${boleto.nome}</a></td>
+                        <td><a href="http://www.sysca.com.br/ver_boleto.php?cod=${boleto.site}">${boleto.nome}</a></td>
                         <td style="text-align: center">${boleto.valor}</td>
                         <td style="text-align: center">${boleto.vencimento}</td>
 
@@ -34,12 +38,10 @@
             </table>
 
 
+
             <div class="pagination">
                 <g:paginate total="${boletosCount ?: 0}" />
             </div>
-            <div class="botao">
-                <g:link controller="boletos" action="rodar" class="btn btn-lg btn-success">RODAR</g:link>
-            </div>
-        </div>
+
     </body>
 </html>

@@ -110,8 +110,10 @@ dataSource:
 environments:
     development:
         dataSource:
-            dbCreate: create-drop
-            url: jdbc:mysql://ebdb.casdnxwazxad.sa-east-1.rds.amazonaws.com:3306/ebdb?user=rudsom&password=16....
+            username: rudsom
+            password: smolder
+            dbCreate: update
+            url: jdbc:mysql://localhost:3306/ccn2
     test:
         dataSource:
             dbCreate: update
