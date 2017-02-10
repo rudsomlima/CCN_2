@@ -28,7 +28,7 @@ class BoletosService {
                 } catch (Exception e1) {
                     n_page = 53550;
                 }
-                println site_ccn;
+                //println site_ccn;
 
                 while(flag_fim==0) {
                     n_page++;
@@ -47,7 +47,7 @@ class BoletosService {
                     }else {
                         try {
                             fim = driver.findElement(By.xpath("/html/body/h2")).getText();
-                            println fim;
+                            //println fim;
                             if (fim == "BOLETO NÃO ENCONTRADO.") {
 
                                 println "nao achou boleto";
@@ -66,7 +66,7 @@ class BoletosService {
 
                             //String strPageTitle = driver.getTitle();
                             //System.out.println("Page title: - " + strPageTitle);
-                            System.out.println("$nome - $valor - $vencimento");
+                            //System.out.println("$nome - $valor - $vencimento");
                             Boletos boleto = new Boletos();
                             boleto.nome = nome;
                             boleto.vencimento = vencimento;
@@ -79,8 +79,15 @@ class BoletosService {
                                 System.out.println("Erro ao salvar!");
                                 println boleto.errors.allErrors
                             }
+                            //println vencimento.substring(3,5)
+                            try {
+                                def nomes_consulta = Boletos.list()
 
-//                            if (nome.contains("RUDSOM"))
+                            nomes_consulta.each { nome_consulta ->
+                                if (nome.contains(Boletos.findByNome(nome_consulta)) && vencimento.substring(3, 5)) println "ACHOU NOME"
+                            }
+                            }catch (Exception e3) {}
+                            //if (nome.contains(Boletos.findByNome(nome_consulta)) && vencimento.substring(3,5)) println "ACHOU NOME"
 //                                sendMail {
 //                                    to "rudsomlima@gmail.com"
 //                                    subject "Boleto CCN - R\$ $valor"
