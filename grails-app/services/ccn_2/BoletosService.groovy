@@ -81,10 +81,12 @@ class BoletosService {
                             }
                             //println vencimento.substring(3,5)
                             try {
-                                def nomes_consulta = Boletos.list()
+                                def nomes_consulta = Consultas.findAll().nome
+                                //println nomes_consulta;
 
                             nomes_consulta.each { nome_consulta ->
-                                if (nome.contains(Boletos.findByNome(nome_consulta)) && vencimento.substring(3, 5)) println "ACHOU NOME"
+                                println nome_consulta
+                                if (nome.contains(nome_consulta.toUpperCase()) && vencimento.substring(3, 5)) println "ACHOU NOME"
                             }
                             }catch (Exception e3) {}
                             //if (nome.contains(Boletos.findByNome(nome_consulta)) && vencimento.substring(3,5)) println "ACHOU NOME"
