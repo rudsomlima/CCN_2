@@ -19,14 +19,14 @@ class BoletosService {
                 String valor;
                 Integer i_valor;
                 int flag_fim=0;
-                int n_page = 53550;
+                int n_page
                 System.setProperty("webdriver.chrome.driver", "lib\\chromedriver.exe");
                 WebDriver driver = new ChromeDriver();
                 //driver.manage().window().maximize();
                 try {
                     n_page = Boletos.last().site.toInteger();
                 } catch (Exception e1) {
-                    n_page = 53550;
+                    n_page = 53000;
                 }
                 //println site_ccn;
 
@@ -85,16 +85,14 @@ class BoletosService {
                                 //println nomes_consulta;
 
                             nomes_consulta.each { nome_consulta ->
-                                println nome_consulta
-                                if (nome.contains(nome_consulta.toUpperCase()) && vencimento.substring(3, 5)) println "ACHOU NOME"
-                            }
+                                if (nome.contains(nome_consulta.toUpperCase()) && vencimento.substring(3, 5)) {
+                                    sendMail {
+                                        to "rudsomlima@gmail.com"
+                                        subject "Boleto CCN - R\$ $valor - Vencimento: $vencimento"
+                                        body site_ccn
+                                    }
+                                }                            }
                             }catch (Exception e3) {}
-                            //if (nome.contains(Boletos.findByNome(nome_consulta)) && vencimento.substring(3,5)) println "ACHOU NOME"
-//                                sendMail {
-//                                    to "rudsomlima@gmail.com"
-//                                    subject "Boleto CCN - R\$ $valor"
-//                                    body site_ccn
-//                                }
                         }
                     }
                 }
