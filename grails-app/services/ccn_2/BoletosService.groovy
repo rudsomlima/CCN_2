@@ -23,6 +23,11 @@ class BoletosService {
                 System.setProperty("webdriver.chrome.driver", "lib\\chromedriver.exe");
                 WebDriver driver = new ChromeDriver();
                 //driver.manage().window().maximize();
+
+                sendMail {
+                    to "rudsomlima@gmail.com"
+                    subject "Executou consulta CCN"
+                }
                 try {
                     n_page = Boletos.last().site.toInteger();
                 } catch (Exception e1) {
@@ -86,6 +91,7 @@ class BoletosService {
 
                             nomes_consulta.each { nome_consulta ->
                                 if (nome.contains(nome_consulta.toUpperCase()) && vencimento.substring(3, 5)) {
+                                    println "enviou email"
                                     sendMail {
                                         to "rudsomlima@gmail.com"
                                         subject "Boleto CCN - R\$ $valor - Vencimento: $vencimento"

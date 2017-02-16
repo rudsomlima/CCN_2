@@ -9,7 +9,7 @@ grails:
     mail:
         host: "smtp.gmail.com"
         port: 465
-        username: "@gmail.com"
+        username: ""
         password: ""
         props:
             mail.smtp.auth: "true"
@@ -122,7 +122,7 @@ environments:
 
         dataSource:
             username: rudsom
-            password: 16local31
+            password: 16
             pooled: true
             dbCreate: update
             driverClassName: com.mysql.jdbc.Driver

@@ -18,6 +18,7 @@
             <div class="col-md-12 text-center">
                 <g:link controller="boletos" action="rodar" class="btn btn-lg btn-success">RODAR</g:link>
             </div>
+            <br/>
 
             <table style="width:50%">
                 <div class="col-md-3">

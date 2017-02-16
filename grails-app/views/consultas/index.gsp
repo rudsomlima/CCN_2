@@ -19,6 +19,9 @@
                 <div class="message" role="status">${flash.message}</div>
             </g:if>
             <f:table collection="${consultasList}" />
+            <br/>
+            <g:checkBox name="envia_mail" value="mail_ativo"> </g:checkBox>
+            <g:link controller="agendaConsulta" action="unschedule" params="[id: p.id]">Remover Job</g:link>
 
             <div class="pagination">
                 <g:paginate total="${consultasCount ?: 0}" />
