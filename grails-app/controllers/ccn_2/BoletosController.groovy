@@ -1,7 +1,8 @@
 package ccn_2
 
-import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
+
+import static org.springframework.http.HttpStatus.*
 
 @Transactional(readOnly = true)
 class BoletosController {
@@ -20,6 +21,16 @@ class BoletosController {
         respond Boletos.list(params), model:[boletosCount: Boletos.count()]
     }
 
+    def busca() {
+        def nome_buscado = Boletos.findAllByNomeIlike("%$params.busca_nome%")
+        //nome_buscado.vencimento = Date.parse("dd/MM/yyyy", nome_buscado.vencimento);
+        //nome_buscado.sort{it.vencimento}.reverse()
+        //println nome_buscado.nome
+        //flash.message = "teste"
+        println params.busca_nome
+        render(view: "index", model: [boletosList: nome_buscado])
+    }
+
     def show(Boletos boletos) {
         respond boletos
     }
@@ -29,7 +40,7 @@ class BoletosController {
     }
 
     @Transactional
-    def save(Boletos boletos) {
+    save(Boletos boletos) {
         if (boletos == null) {
             transactionStatus.setRollbackOnly()
             notFound()
@@ -58,7 +69,7 @@ class BoletosController {
     }
 
     @Transactional
-    def update(Boletos boletos) {
+    update(Boletos boletos) {
         if (boletos == null) {
             transactionStatus.setRollbackOnly()
             notFound()
@@ -83,7 +94,7 @@ class BoletosController {
     }
 
     @Transactional
-    def delete(Boletos boletos) {
+    delete(Boletos boletos) {
 
         if (boletos == null) {
             transactionStatus.setRollbackOnly()

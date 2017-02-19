@@ -5,7 +5,9 @@
         <g:set var="entityName" value="${message(code: 'boletos.label', default: 'Boletos')}" />
         <title><g:message code="default.list.label" args="[entityName]" /></title>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <asset:javascript src="jquery-2.2.0.min.js"/>
+        <asset:javascript src="jquery-ui.js"/>
+        <asset:stylesheet src="jquery-ui.css"/>
 
     </head>
     <body>
@@ -16,10 +18,20 @@
             </g:if>
 
             <div class="col-md-12 text-center">
-                <g:link controller="boletos" action="rodar" class="btn btn-lg btn-success">RODAR</g:link>
+                <g:link controller="boletos" action="rodar" class="btn btn-lg btn-success">BUSCAR NOVOS BOLETOS</g:link>
+            </div>
+    <br/>
+    <br/>
+    <br/>
+
+    <div class="input-sm" style="text-align:center;">
+        <g:form nome="formBusca" controller="boletos" action="busca">
+            <label>Buscar nome:</label>
+            <input name="busca_nome" style="color:#ff0000"/>
+            <g:submitButton name="busca" value="Buscar"/>
+        </g:form>
             </div>
             <br/>
-
             <table style="width:50%">
                 <div class="col-md-3">
 
