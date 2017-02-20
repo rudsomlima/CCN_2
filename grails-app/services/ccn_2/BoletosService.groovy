@@ -8,7 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver
 @Transactional
 class BoletosService {
 
-    def extrair() {
+    String extrair() {
 
 
         String nome
@@ -54,10 +54,10 @@ class BoletosService {
                             fim = driver.findElement(By.xpath("/html/body/h2")).getText()
                             //println fim;
                             if (fim == "BOLETO NÃO ENCONTRADO.") {
-
                                 println "nao achou boleto"
                                 driver.close()
                                 flag_fim = 1
+                                return "Não achou boleto"
                             }
 
                         } catch (Exception e) {

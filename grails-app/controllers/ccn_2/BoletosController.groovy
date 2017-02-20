@@ -12,7 +12,8 @@ class BoletosController {
     def boletosService
 
     def rodar(){
-        boletosService.extrair()
+        def mensagem = boletosService.extrair()
+        flash.message = mensagem
         redirect(controller: "boletos", view: "index")
     }
 
