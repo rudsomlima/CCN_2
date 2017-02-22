@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!-- First include jquery js -->
+    <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 
     <asset:stylesheet src="application.css"/>
     <!-- Latest compiled and minified CSS -->

@@ -57,7 +57,7 @@ class BoletosService {
                                 println "nao achou boleto"
                                 driver.close()
                                 flag_fim = 1
-                                return "Não achou boleto"
+                                return "Fim de boletos!"
                             }
 
                         } catch (Exception e) {
@@ -95,7 +95,7 @@ class BoletosService {
                                     sendMail {
                                         to "rudsomlima@gmail.com"
                                         subject "Boleto CCN - R\$ $valor - Vencimento: $vencimento"
-                                        body site_ccn
+                                        text "$nome\n\n\n$site_ccn"
                                     }
                                 }                            }
                             }catch (Exception e3) {}

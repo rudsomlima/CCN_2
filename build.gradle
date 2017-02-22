@@ -47,6 +47,7 @@ dependencies {
     compile "org.hibernate:hibernate-ehcache:5.1.2.Final"
     compile fileTree(dir: './lib', include: ['*.jar'])
     compile "org.grails.plugins:mail:2.0.0.RC6"
+    compile group: 'org.webjars.bower', name: 'jquery', version: '3.1.1'
     console "org.grails:grails-console"
     compile "org.grails.plugins:quartz:2.0.9"
     compile "org.grails.plugins:quartz-monitor:1.3"

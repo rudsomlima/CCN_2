@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
     <head>
+
         <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code: 'boletos.label', default: 'Boletos')}" />
         <title><g:message code="default.list.label" args="[entityName]" /></title>
 
         <asset:javascript src="jquery-2.2.0.min.js"/>
         <asset:javascript src="jquery-ui.js"/>
-        <asset:stylesheet src="jquery-ui.css"/>
 
     </head>
     <body>
@@ -56,5 +56,30 @@
                 <g:paginate total="${boletosCount ?: 0}" />
             </div>
 
+    <g:javascript>
+        $(document).ready(function () {
+            $( "#busca_nome" ).autocomplete({
+                minLength: 3,
+                source: function( request, response ) {
+                    $.ajax({
+                        url:'${g.createLink(controller: 'boletos', action: 'busca')}',
+                        dataType: 'json',
+                        data: {codigo: $('#busca_nome').val()},
+                        success: function (data) {
+                            response(data);
+                        },
+                        error: function (request, status, error) {
+                            console.log('Deu erro');
+                        }
+                    });
+                },
+                change: function( event, ui ) {
+                    $("#busca_nome").val(ui.item.value.substring(0,3));
+                }
+
+            });
+        });
+
+    </g:javascript>
     </body>
 </html>

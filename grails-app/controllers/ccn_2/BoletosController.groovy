@@ -22,8 +22,8 @@ class BoletosController {
         respond Boletos.list(params), model:[boletosCount: Boletos.count()]
     }
 
-    def busca() {
-        def nome_buscado = Boletos.findAllByNomeIlike("%$params.busca_nome%")
+    def busca(String codigo) {
+        def nome_buscado = Boletos.findAllByNomeIlike(codigo)
         //nome_buscado.vencimento = Date.parse("dd/MM/yyyy", nome_buscado.vencimento);
         //nome_buscado.sort{it.vencimento}.reverse()
         //println nome_buscado.nome
