@@ -23,7 +23,7 @@ class BoletosController {
     }
 
     def busca(String codigo) {
-        def nome_buscado = Boletos.findAllByNomeIlike(codigo)
+        def nome_buscado = Boletos.findAllByNomeIlike("%$params.busca_nome%")
         //nome_buscado.vencimento = Date.parse("dd/MM/yyyy", nome_buscado.vencimento);
         //nome_buscado.sort{it.vencimento}.reverse()
         //println nome_buscado.nome

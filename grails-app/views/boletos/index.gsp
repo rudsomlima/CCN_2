@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html>
-    <head>
+<head>
+    <meta name="layout" content="main"/>
+    <g:set var="entityName" value="${message(code: 'agendaConsulta.label', default: 'AgendaConsulta')}"/>
+    <title><g:message code="default.create.label" args="[entityName]"/></title>
+    <asset:javascript src="jquery-2.2.0.min.js"/>
+    <asset:javascript src="jquery-ui.js"/>
+    <asset:stylesheet src="jquery-ui.css"/>
 
-        <meta name="layout" content="main" />
-        <g:set var="entityName" value="${message(code: 'boletos.label', default: 'Boletos')}" />
-        <title><g:message code="default.list.label" args="[entityName]" /></title>
-
-        <asset:javascript src="jquery-2.2.0.min.js"/>
-        <asset:javascript src="jquery-ui.js"/>
-
-    </head>
+</head>
     <body>
         <a href="#list-boletos" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 
