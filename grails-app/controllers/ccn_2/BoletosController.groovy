@@ -23,12 +23,14 @@ class BoletosController {
     }
 
     def busca(String codigo) {
-        def nome_buscado = Boletos.findAllByNomeIlike("%$params.busca_nome%")
+        Boletos nome_buscado = new Boletos()
+        nome_buscado = Boletos.findAllByNomeIlike("%$codigo%")
+
         //nome_buscado.vencimento = Date.parse("dd/MM/yyyy", nome_buscado.vencimento);
         //nome_buscado.sort{it.vencimento}.reverse()
         //println nome_buscado.nome
         //flash.message = "teste"
-        println params.busca_nome
+        println nome_buscado
         render(view: "index", model: [boletosList: nome_buscado])
     }
 

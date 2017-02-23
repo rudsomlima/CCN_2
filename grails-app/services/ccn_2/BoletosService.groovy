@@ -31,7 +31,7 @@ class BoletosService {
                 try {
                     n_page = Boletos.last().site.toInteger()
                 } catch (Exception e1) {
-                    n_page = 48000
+                    n_page = 52000
                 }
                 //println site_ccn;
 

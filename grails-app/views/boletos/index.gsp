@@ -26,19 +26,37 @@
     <div class="input-sm" style="text-align:center;">
         <g:form nome="formBusca" controller="boletos" action="busca">
             <label>Buscar nome:</label>
-            <input name="busca_nome" style="color:#ff0000"/>
+            <g:field name="busca_nome" type="search" style="color:#ff0000"/>
             <g:submitButton name="busca" value="Buscar"/>
         </g:form>
-            </div>
-            <br/>
-            <table style="width:50%">
-                <div class="col-md-3">
+    </div>
 
-                <tr>
-                    <th>Nome</th>
-                    <th style="text-align: center">Valor</th>
-                    <th style="text-align: center">Vencimento</th>
-                </tr>
+%{--<div>--}%
+%{--<g:form action="busca">--}%
+    %{--<fieldset class="form">--}%
+        %{--<div class="ui-widget">--}%
+            %{--<f:field bean="boletos" property="nome" />--}%
+        %{--</div>--}%
+    %{--</fieldset>--}%
+%{--</g:form>--}%
+%{--</div>--}%
+
+
+
+
+
+
+
+
+    <br/>
+<table style="width:50%">
+    <div class="col-md-3">
+
+    <tr>
+        <th>Nome</th>
+        <th style="text-align: center">Valor</th>
+        <th style="text-align: center">Vencimento</th>
+    </tr>
                 <g:each var="boleto" in="${boletosList}">
                     <tr>
                         <td><a href="http://www.sysca.com.br/ver_boleto.php?cod=${boleto.site}">${boleto.nome}</a></td>
@@ -56,6 +74,7 @@
             </div>
 
     <g:javascript>
+        // alert("Javascript funcionando!");
         $(document).ready(function () {
             $( "#busca_nome" ).autocomplete({
                 minLength: 3,
