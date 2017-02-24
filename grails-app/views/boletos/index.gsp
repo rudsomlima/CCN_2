@@ -23,10 +23,10 @@
     <br/>
     <br/>
 
-    <div class="input-sm" style="text-align:center;">
-        <g:form nome="formBusca" controller="boletos" action="busca">
+    <div class="input-sm">
+        <g:form nome="formBusca" controller="boletos" action="ajaxBusca">
             <label>Buscar nome:</label>
-            <g:field name="busca_nome" type="submit" style="color:#ff0000" value="${array}"/>
+            <g:field name="busca_nome" type="text" style="color:#ff0000"/>
             <g:submitButton name="enviar" value="Buscar"/>
         </g:form>
     </div>
@@ -73,10 +73,8 @@
                             console.log('Deu erro');
                         }
                     });
-                },
-                change: function( event, ui ) {
-                    $("#busca_nome").val(ui.item.value.substring(0,3));
                 }
+
 
             });
         });

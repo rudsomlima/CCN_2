@@ -28,12 +28,9 @@ class BoletosController {
         println nomes_busca
         List<String> array = new ArrayList()
         nomes_busca.each{ r->
-            array.add(r.nome - r.vencimento)
+            array.add(r.nome)
         }
-
         render array as JSON
-        render(view: "index", model: [boletosList: nomes_busca])
-
     }
 
     def busca(String ajax) {
