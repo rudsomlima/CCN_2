@@ -23,8 +23,8 @@
     <br/>
     <br/>
 
-    <div class="input-sm">
-        <g:form nome="formBusca" controller="boletos" action="ajaxBusca">
+    <div class="input-sm" style="text-align: center">
+        <g:form nome="formBusca" controller="boletos" action="busca">
             <label>Buscar nome:</label>
             <g:field name="busca_nome" type="text" style="color:#ff0000"/>
             <g:submitButton name="enviar" value="Buscar"/>
@@ -32,9 +32,8 @@
     </div>
 
     <br/>
-            <table style="width:50%">
-                <div class="col-md-3">
-
+    <table style="text-align: center">
+        <div class="col-md-12">
                     <tr>
                         <th>Nome</th>
                         <th style="text-align: center">Valor</th>
@@ -68,6 +67,7 @@
                         data: {ajax: $('#busca_nome').val()},
                         success: function (data) {
                             response(data);
+                            //alert("Javascript funcionando!");
                         },
                         error: function (request, status, error) {
                             console.log('Deu erro');

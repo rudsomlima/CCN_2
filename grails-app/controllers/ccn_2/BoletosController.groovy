@@ -24,16 +24,16 @@ class BoletosController {
     }
 
     def ajaxBusca(String ajax){
-        def nomes_busca = Boletos.findAllByNomeIlike("%$ajax%")
-        println nomes_busca
+        def nomes_busca = Boletos.findAllByNomeIlike("%$ajax%", [max: 1])
         List<String> array = new ArrayList()
         nomes_busca.each{ r->
             array.add(r.nome)
         }
+        //println array
         render array as JSON
     }
 
-    def busca(String ajax) {
+    def busca() {
         String codigo = params.busca_nome
         def nomes_busca = Boletos.findAllByNomeIlike("%$codigo%")
         //def nome_buscado = Boletos.findAll()
@@ -41,11 +41,8 @@ class BoletosController {
         //nome_buscado.sort{it.vencimento}.reverse()
 //        println nome_buscado.nome
         //flash.message = "teste"
-
-        nomes_busca = Boletos.findAllByNomeIlike("%$ajax%")
-
+        println codigo
         println nomes_busca
-        //println codigo
         //redirect(controller: "boletos", view: "index", model: [boletosList: nomes_busca])
         render(view: "index", model: [boletosList: nomes_busca])
     }
