@@ -1,5 +1,6 @@
 package ccn_2
 
+import grails.converters.JSON
 import grails.transaction.Transactional
 
 import static org.springframework.http.HttpStatus.*
@@ -22,16 +23,34 @@ class BoletosController {
         respond Boletos.list(params), model:[boletosCount: Boletos.count()]
     }
 
-    def busca(String codigo) {
-        Boletos nome_buscado = new Boletos()
-        nome_buscado = Boletos.findAllByNomeIlike("%$codigo%")
+    def ajaxBusca(String ajax){
+        def nomes_busca = Boletos.findAllByNomeIlike("%$ajax%")
+        println nomes_busca
+        List<String> array = new ArrayList()
+        nomes_busca.each{ r->
+            array.add(r.nome - r.vencimento)
+        }
 
+        render array as JSON
+        render(view: "index", model: [boletosList: nomes_busca])
+
+    }
+
+    def busca(String ajax) {
+        String codigo = params.busca_nome
+        def nomes_busca = Boletos.findAllByNomeIlike("%$codigo%")
+        //def nome_buscado = Boletos.findAll()
         //nome_buscado.vencimento = Date.parse("dd/MM/yyyy", nome_buscado.vencimento);
         //nome_buscado.sort{it.vencimento}.reverse()
-        //println nome_buscado.nome
+//        println nome_buscado.nome
         //flash.message = "teste"
-        println nome_buscado
-        render(view: "index", model: [boletosList: nome_buscado])
+
+        nomes_busca = Boletos.findAllByNomeIlike("%$ajax%")
+
+        println nomes_busca
+        //println codigo
+        //redirect(controller: "boletos", view: "index", model: [boletosList: nomes_busca])
+        render(view: "index", model: [boletosList: nomes_busca])
     }
 
     def show(Boletos boletos) {

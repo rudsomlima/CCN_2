@@ -26,45 +26,28 @@
     <div class="input-sm" style="text-align:center;">
         <g:form nome="formBusca" controller="boletos" action="busca">
             <label>Buscar nome:</label>
-            <g:field name="busca_nome" type="search" style="color:#ff0000"/>
-            <g:submitButton name="busca" value="Buscar"/>
+            <g:field name="busca_nome" type="submit" style="color:#ff0000" value="${array}"/>
+            <g:submitButton name="enviar" value="Buscar"/>
         </g:form>
     </div>
 
-%{--<div>--}%
-%{--<g:form action="busca">--}%
-    %{--<fieldset class="form">--}%
-        %{--<div class="ui-widget">--}%
-            %{--<f:field bean="boletos" property="nome" />--}%
-        %{--</div>--}%
-    %{--</fieldset>--}%
-%{--</g:form>--}%
-%{--</div>--}%
-
-
-
-
-
-
-
-
     <br/>
-<table style="width:50%">
-    <div class="col-md-3">
+            <table style="width:50%">
+                <div class="col-md-3">
 
-    <tr>
-        <th>Nome</th>
-        <th style="text-align: center">Valor</th>
-        <th style="text-align: center">Vencimento</th>
-    </tr>
-                <g:each var="boleto" in="${boletosList}">
                     <tr>
-                        <td><a href="http://www.sysca.com.br/ver_boleto.php?cod=${boleto.site}">${boleto.nome}</a></td>
-                        <td style="text-align: center">${boleto.valor}</td>
-                        <td style="text-align: center">${boleto.vencimento}</td>
-
+                        <th>Nome</th>
+                        <th style="text-align: center">Valor</th>
+                        <th style="text-align: center">Vencimento</th>
                     </tr>
-                </g:each>
+                    <g:each var="boleto" in="${boletosList}">
+                        <tr>
+                            <td><a href="http://www.sysca.com.br/ver_boleto.php?cod=${boleto.site}">${boleto.nome}</a></td>
+                            <td style="text-align: center">${boleto.valor}</td>
+                            <td style="text-align: center">${boleto.vencimento}</td>
+
+                        </tr>
+                    </g:each>
             </table>
 
 
@@ -80,9 +63,9 @@
                 minLength: 3,
                 source: function( request, response ) {
                     $.ajax({
-                        url:'${g.createLink(controller: 'boletos', action: 'busca')}',
+                        url:'${g.createLink(controller: 'boletos', action: 'ajaxBusca')}',
                         dataType: 'json',
-                        data: {codigo: $('#busca_nome').val()},
+                        data: {ajax: $('#busca_nome').val()},
                         success: function (data) {
                             response(data);
                         },
