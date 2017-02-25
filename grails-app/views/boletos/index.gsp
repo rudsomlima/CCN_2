@@ -23,13 +23,20 @@
     <br/>
     <br/>
 
-    <div class="input-sm" style="text-align: center">
+    <div class="container">
         <g:form nome="formBusca" controller="boletos" action="busca">
-            <label>Buscar nome:</label>
-            <g:field name="busca_nome" type="text" style="color:#ff0000"/>
-            <g:submitButton name="enviar" value="Buscar"/>
+            <div class="input-group input-group-lg">
+                <g:field name="busca_nome" type="text" style="color:#ff0000" class="form-control"
+                         placeholder="Insira nome a buscar"/>
+                <div class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                </div>
+            </div>
         </g:form>
     </div>
+
+
+
 
     <br/>
     <table style="text-align: center">
