@@ -16,7 +16,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8 col-md-offset-2">
                 <g:if test="${flash.message}">
-                    <div class="alert alert-info" role="status">${flash.message}</div>
+                    <div class="alert alert-info fade in" data-dismiss="alert" role="status">${flash.message}</div>
                 </g:if>
 
                 <div class="text-center">
@@ -72,6 +72,7 @@
     <g:javascript>
         // alert("Javascript funcionando!");
         $(document).ready(function () {
+            $( "#alert" ).alert()
             $( "#busca_nome" ).focus();
             $( "#busca_nome" ).autocomplete({
                 minLength: 3,
