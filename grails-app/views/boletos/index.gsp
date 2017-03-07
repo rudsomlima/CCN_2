@@ -26,7 +26,7 @@
     <div class="container">
         <g:form nome="formBusca" controller="boletos" action="busca">
             <div class="input-group input-group-lg">
-                <g:field name="busca_nome" type="text" style="color:#ff0000" class="form-control"
+                <g:field name="busca_nome" type="search" autofocus=""  style="color:#ff0000" class="form-control"
                          placeholder="Insira nome a buscar"/>
                 <div class="input-group-btn">
                     <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
@@ -39,33 +39,38 @@
 
 
     <br/>
-    <table style="text-align: center">
-        <div class="col-md-12">
-                    <tr>
-                        <th>Nome</th>
-                        <th style="text-align: center">Valor</th>
-                        <th style="text-align: center">Vencimento</th>
-                    </tr>
-                    <g:each var="boleto" in="${boletosList}">
+    <div class="row justify-content-center">
+        <div class="col-md-offset-2">
+        <table style="text-align: center" >
+            <div>
                         <tr>
-                            <td><a href="http://www.sysca.com.br/ver_boleto.php?cod=${boleto.site}">${boleto.nome}</a></td>
-                            <td style="text-align: center">${boleto.valor}</td>
-                            <td style="text-align: center">${boleto.vencimento}</td>
-
+                            <th>Nome</th>
+                            <th style="text-align: center">Valor</th>
+                            <th style="text-align: center">Vencimento</th>
                         </tr>
-                    </g:each>
-            </table>
+                        <g:each var="boleto" in="${boletosList}">
+                            <tr>
+                                <td><a href="http://www.sysca.com.br/ver_boleto.php?cod=${boleto.site}">${boleto.nome}</a></td>
+                                <td style="text-align: center">${boleto.valor}</td>
+                                <td style="text-align: center">${boleto.vencimento}</td>
 
-
+                            </tr>
+                        </g:each>
+            </div>
+        </table>
 
             <div class="pagination">
                 <g:paginate total="${boletosCount ?: 0}" />
             </div>
 
+        </div>
+    </div>
+
     <g:javascript>
         // alert("Javascript funcionando!");
+
         $(document).ready(function () {
-            $( "#busca_nome" ).autocomplete({
+            $("#busca_nome").autocomplete({
                 minLength: 3,
                 source: function( request, response ) {
                     $.ajax({
@@ -74,7 +79,8 @@
                         data: {ajax: $('#busca_nome').val()},
                         success: function (data) {
                             response(data);
-                            //alert("Javascript funcionando!");
+                            //document.getElementsByClassName("form-control").value = data;
+                            //alert(data);
                         },
                         error: function (request, status, error) {
                             console.log('Deu erro');
