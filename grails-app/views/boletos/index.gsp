@@ -10,22 +10,24 @@
 
 </head>
     <body>
-    <div class="container span10">
+    <div class="container span8">
         <a href="#list-boletos" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-
-        <g:if test="${flash.message}">
-            <div class="message" role="status">${flash.message}</div>
-        </g:if>
-
-        <div class="text-center">
-            <g:link controller="boletos" action="rodar" class="btn btn-lg btn-success">BUSCAR NOVOS BOLETOS</g:link>
-        </div>
-
-        <br/>
-        <br/>
 
         <div class="row justify-content-center">
             <div class="col-md-8 col-md-offset-2">
+                <g:if test="${flash.message}">
+                    <div class="alert alert-info" role="status">${flash.message}</div>
+                </g:if>
+
+                <div class="text-center">
+                    <g:link controller="boletos" action="rodar"
+                            class="btn btn-lg btn-success">BUSCAR NOVOS BOLETOS</g:link>
+                </div>
+
+                <br/>
+                <br/>
+
+
                 <g:form nome="formBusca" controller="boletos" action="busca">
                     <div class="input-group input-group-lg col-md-8 col-md-offset-2">
                         <g:field name="busca_nome" type="text" style="color:#ff0000" class="form-control"
@@ -63,7 +65,6 @@
                 <div class="pagination">
                     <g:paginate total="${boletosCount ?: 0}"/>
                 </div>
-
             </div>
         </div>
     </div>
