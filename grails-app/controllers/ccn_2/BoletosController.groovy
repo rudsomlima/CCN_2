@@ -24,7 +24,7 @@ class BoletosController {
     }
 
     def ajaxBusca(String ajax){
-        def nomes_busca = Boletos.findAllByNomeIlike("%$ajax%", [max: 1])
+        def nomes_busca = Boletos.findAllByNomeIlike("%$ajax%", [max: 10])
         List<String> array = new ArrayList()
         nomes_busca.each{ r->
             array.add(r.nome)
